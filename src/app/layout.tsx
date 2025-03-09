@@ -1,6 +1,17 @@
+"use client";
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import "@rainbow-me/rainbowkit/styles.css";
+import { ReduxProvider } from "@/redux/Provider";
 import "./globals.css";
+
+import { RainbowProviders } from "@/lib/RainbowProvider";
+//import Footer from "@/components/Footer/Footer";
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +25,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Okabul",
-  description: "Mange Airdrops",
+  description: "Manage Airdrops",
 };
 
 export default function RootLayout({
@@ -27,7 +38,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <RainbowProviders>
+                    <ReduxProvider>
+                        
+                        {children}
+                      
+                    </ReduxProvider>
+                </RainbowProviders>
+                <GoogleAnalytics gaId="G-J9E9LGZ479" />
       </body>
     </html>
   );

@@ -3,10 +3,12 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { api } from "./features/api.slice";
 import { userSlice } from "./features/user.slice";
+import { rightSidebarSlice } from "./features/rightSidebar.slice";
 
 const rootReducer = combineReducers({
     [api.reducerPath]: api.reducer,
     [userSlice.reducerPath]: userSlice.reducer,
+    [rightSidebarSlice.reducerPath]: rightSidebarSlice.reducer,
 });
 
 export const store = configureStore({
